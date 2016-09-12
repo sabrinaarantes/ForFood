@@ -1,0 +1,2 @@
+INSERT INTO `forfood`.`cargo` (`carNome`, `carDescricao`, `carSalario`) VALUES ('Garçom', 'faz nada', '212');
+INSERT INTO `forfood`.`cargo` (`carNome`, `carDescricao`, `carSalario`) VALUES ('Gerente', 'faz tudi', '312');
