@@ -177,7 +177,17 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String login = jTextField1.getText();
+        FuncionarioControle controle = new FuncionarioControle();
+        boolean x = controle.entrarConta(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()));
+        if(x){
+            JOptionPane.showMessageDialog(null, "Bem vindo!");
+        }else{
+            
+            JOptionPane.showMessageDialog(null, "Não foi possível conectar!");
+        }
+        
+        
+      /*  String login = jTextField1.getText();
         String senha = jPasswordField1.getText();
         FuncionarioControle f = new FuncionarioControle();
         ArrayList<Funcionario> arrX = new ArrayList<Funcionario>();
@@ -198,7 +208,7 @@ public class LoginGUI extends javax.swing.JFrame {
             }
                 
             
-        }
+        }*/
         
         
         /*for (int i = 0; i < arrX.size(); i++) {

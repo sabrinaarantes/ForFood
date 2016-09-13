@@ -19,8 +19,20 @@ public class FuncionarioControle {
         FuncionarioDAO fdao = new FuncionarioDAO();
         return fdao.listarSenhaCpfCodigo();
     }
+     
+    public boolean entrarConta(String cpf, String senha){
+        return new FuncionarioDAO().verificaConta(cpf, senha);
+    }
     
-    public boolean adiciona(Funcionario f) {
+    public boolean adiciona(String cpf, String senha, String nome, String endereco, int telefone, int carcod, String carnome) {
+        Funcionario f = new Funcionario();
+        f.setCpf(cpf);
+        f.setSenha(Criptografia.criptografar(senha));
+        f.setTelefone(telefone);
+        f.setCarCodigo(carcod);
+        f.setCarNome(carnome);
+        f.setNome(nome);
+        f.setEndereco(endereco);
         FuncionarioDAO fdao = new FuncionarioDAO();
         return fdao.adiciona(f);
     }

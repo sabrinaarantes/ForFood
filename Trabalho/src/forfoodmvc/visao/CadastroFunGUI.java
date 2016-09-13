@@ -353,7 +353,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         
         f.setCarNome(jComboBoxCargo.getSelectedItem().toString());
         FuncionarioControle funcionarioControl = new FuncionarioControle();
-        boolean verifica = funcionarioControl.adiciona(f);
+        boolean verifica = funcionarioControl.adiciona(f.getCpf(), f.getSenha(), f.getEndereco(), f.getNome(), f.getTelefone(), f.getCarCodigo(), f.getCarNome());
         AL.add(f);
         preencherTabela(AL);
 
