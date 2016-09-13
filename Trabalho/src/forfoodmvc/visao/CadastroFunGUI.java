@@ -6,12 +6,14 @@
 package forfoodmvc.visao;
 
 import forfoodmvc.controle.CargoControle;
+import forfoodmvc.controle.Criptografia;
 import forfoodmvc.controle.FuncionarioControle;
 import forfoodmvc.controle.PedidoControle;
 import forfoodmvc.modelo.Cargo;
 import forfoodmvc.modelo.Funcionario;
 import forfoodmvc.modelo.Pedido;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -23,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CadastroFunGUI extends javax.swing.JFrame {
 
-    
+    Scanner entrada = new Scanner (System.in);
     ArrayList<Funcionario> AL = new ArrayList<>();
     CargoControle cargoControl = new CargoControle();
     
@@ -336,7 +338,8 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         f.setTelefone(Integer.parseInt(jTextFieldTelefone.getText()));
         f.setCpf(jTextFieldCpf.getText());
         f.setEndereco(jTextFieldEndereco.getText());
-        f.setSenha(jPasswordFieldSenha.getText());
+        f.setSenha(Criptografia.criptografar(jPasswordFieldSenha.getText()));
+        
         //-------------------------------------------------
         String cargo = (String) jComboBoxCargo.getSelectedItem();
         String[] parts = cargo.split("-");
