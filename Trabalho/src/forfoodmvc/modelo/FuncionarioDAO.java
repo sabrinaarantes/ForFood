@@ -57,4 +57,28 @@ public class FuncionarioDAO {
     }    
     
     
+     public boolean verificaConta(String cpf, String senha) {
+        ResultSet rs = null;
+        boolean res = false;
+        String sql = "select * from funcionario where funCpf = ? and funSenha = md5(?);";
+        
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt = con.prepareStatement(sql);
+            
+            stmt.setString(1, cpf);
+            stmt.setString(2, senha);
+            rs = stmt.executeQuery();
+            
+            if(rs.next()) {
+                res = true;
+            }
+            
+            stmt.close();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+    
 }
