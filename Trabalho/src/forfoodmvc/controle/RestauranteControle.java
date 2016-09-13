@@ -2,8 +2,8 @@
 package forfoodmvc.controle;
 
 
-import forfoodmvc.modelo.Restaurante;
-import forfoodmvc.modelo.RestauranteDAO;
+import forfoodmvc.modeloAntigo.Restaurante;
+import forfoodmvc.modeloAntigo.RestauranteDAO;
 
 
 public class RestauranteControle {

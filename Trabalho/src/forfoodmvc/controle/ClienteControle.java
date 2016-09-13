@@ -5,8 +5,8 @@
  */
 package forfoodmvc.controle;
 
-import forfoodmvc.modelo.Cliente;
-import forfoodmvc.modelo.ClienteDAO;
+import forfoodmvc.modeloAntigo.Cliente;
+import forfoodmvc.modeloAntigo.ClienteDAO;
 import forfoodmvc.visao.CadastroClienteGUI;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

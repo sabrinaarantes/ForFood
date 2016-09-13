@@ -5,118 +5,56 @@
  */
 package forfoodmvc.modelo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
 
 /**
  *
  * @author Alunos
  */
 public class ClienteDAO {
-
-    // a conexão com o banco de dados
-    private Connection con;
-
-    public ClienteDAO() {
-        this.con = ConnectionFactory.getConnection();
+    
+    
+    public void cadastrar(Cliente cli) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        s.save(cli);
+        s.getTransaction().commit();
     }
 
-    public void adicionar(Cliente cliente) {
-        String sql = "insert into Cliente (cliNome,cliFone, cliEndereco, cliCPF) values (?,?,?,?)";
-        
-        try {
-            // prepared statement para inserção
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // seta os valores
-            stmt.setString(1, cliente.getNome());
-            stmt.setInt(2, cliente.getTelefone());
-            stmt.setString(3, cliente.getEndereco());
-            stmt.setInt(4, cliente.getCpf());
-            
-
-            // executa
-            stmt.execute();
-            stmt.close();
-           
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        
+    public void alterar(Cliente cli) {
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        s.saveOrUpdate(cli);
+        s.getTransaction().commit();
     }
 
     public void deletar(int cpf) {
-        String sql = "delete from Cliente where cliCpf = ?;";
-
-        try {
-            // prepared statement para inserção
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // seta os valores
-            stmt.setInt(1, cpf);
-
-            // executa
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public ArrayList listarClientes() {
-        String sql = "select * from Cliente";
-        ArrayList<Cliente> a = new ArrayList<Cliente>();
-        try {
-            // prepared statement para inserção
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // executa
-            ResultSet rs = stmt.executeQuery();
-            //joga resultado da consulta no ArrayList
-            while (rs.next()) {
-                Cliente x = new Cliente();
-                        x.setCpf(rs.getInt(1));
-                        x.setNome(rs.getString(2)) ;
-                        x.setTelefone(rs.getInt(3));
-                        x.setEndereco(rs.getString(4));
-                        
-                        
-                a.add(x);
+        for (Cliente cli : listar()) {
+            if (cpf == cli.getCliCpf()) {
+                Cliente t1 = cli;
+                Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+                s.beginTransaction();
+                s.delete(t1);
+                s.getTransaction().commit();
             }
-            stmt.close();
-        } catch (SQLException e) {
-            System.out.println("Erro SQL");
-            throw new RuntimeException(e);
-            
         }
-        return a;
-    }
-    
-    public void atualizar(Cliente cliente) {
-        String sql = "update Cliente set cliNome=?, cliFone=?, cliEndereco=? where cliCpf=?";
-        
-        try {
-            
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            stmt.setString(1, cliente.getNome());
-            
-            stmt.setInt(2, cliente.getTelefone());
-            stmt.setString(3, cliente.getEndereco());
-            stmt.setInt(4, cliente.getCpf());
-            
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        
     }
 
+    public ArrayList<Cliente> listar() {
+        String hql = "select * from cliente;";
+        ArrayList<Cliente> arrayAni = new ArrayList();
+        Session s = HibernateUtil.getSessionFactory().getCurrentSession();
+        s.beginTransaction();
+        Query query = s.createSQLQuery(hql);
+        query.setResultTransformer(Transformers.aliasToBean(Cliente.class));//Sem isso aqui impossível de retornar
+        List<Cliente> clientes = query.list();
+        s.getTransaction().commit();
+        arrayAni = (ArrayList<Cliente>) clientes;
+        return arrayAni;
+    }    
     
-
 }

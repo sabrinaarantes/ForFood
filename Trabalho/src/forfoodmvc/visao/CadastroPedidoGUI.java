@@ -7,11 +7,11 @@ package forfoodmvc.visao;
 
 import forfoodmvc.controle.FuncionarioControle;
 import forfoodmvc.controle.PratoControle;
-import forfoodmvc.modelo.Funcionario;
-import forfoodmvc.modelo.Pedido;
+import forfoodmvc.modeloAntigo.Funcionario;
+import forfoodmvc.modeloAntigo.Pedido;
 import forfoodmvc.controle.PedidoControle;
 
-import forfoodmvc.modelo.Prato;
+import forfoodmvc.modeloAntigo.Prato;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;

@@ -8,7 +8,7 @@ package forfoodmvc.visao;
 
 import forfoodmvc.controle.FuncionarioControle;
 
-import forfoodmvc.modelo.Funcionario;
+import forfoodmvc.modeloAntigo.Funcionario;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 

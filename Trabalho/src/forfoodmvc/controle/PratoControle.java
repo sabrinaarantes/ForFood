@@ -5,10 +5,10 @@
  */
 package forfoodmvc.controle;
 
-import forfoodmvc.modelo.Cliente;
-import forfoodmvc.modelo.ClienteDAO;
-import forfoodmvc.modelo.Prato;
-import forfoodmvc.modelo.PratoDAO;
+import forfoodmvc.modeloAntigo.Cliente;
+import forfoodmvc.modeloAntigo.ClienteDAO;
+import forfoodmvc.modeloAntigo.Prato;
+import forfoodmvc.modeloAntigo.PratoDAO;
 import java.util.ArrayList;
 
 /**

@@ -1,5 +1,5 @@
 
-package forfoodmvc.modelo;
+package forfoodmvc.modeloAntigo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

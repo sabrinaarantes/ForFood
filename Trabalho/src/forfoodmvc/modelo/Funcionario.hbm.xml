@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13/09/2016 11:16:18 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="forfoodmvc.modelo.Funcionario" table="funcionario" catalog="forfood" optimistic-lock="version">
+        <id name="funCodigo" type="java.lang.Integer">
+            <column name="funCodigo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cargo" class="forfoodmvc.modelo.Cargo" fetch="select">
+            <column name="Cargo_carCodigo" not-null="true" />
+        </many-to-one>
+        <property name="funNome" type="string">
+            <column name="funNome" length="45" not-null="true" />
+        </property>
+        <property name="funEndereco" type="string">
+            <column name="funEndereco" length="45" not-null="true" />
+        </property>
+        <property name="funFone" type="int">
+            <column name="funFone" not-null="true" />
+        </property>
+        <property name="funSenha" type="string">
+            <column name="funSenha" length="45" not-null="true" />
+        </property>
+        <property name="funCpf" type="string">
+            <column name="funCpf" length="45" not-null="true" />
+        </property>
+        <set name="pedidos" table="pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Funcionario_funCodigo" not-null="true" />
+            </key>
+            <one-to-many class="forfoodmvc.modelo.Pedido" />
+        </set>
+    </class>
+</hibernate-mapping>

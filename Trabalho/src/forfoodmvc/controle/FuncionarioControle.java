@@ -5,8 +5,8 @@
  */
 package forfoodmvc.controle;
 
-import forfoodmvc.modelo.Funcionario;
-import forfoodmvc.modelo.FuncionarioDAO;
+import forfoodmvc.modeloAntigo.Funcionario;
+import forfoodmvc.modeloAntigo.FuncionarioDAO;
 import java.util.ArrayList;
 
 /**

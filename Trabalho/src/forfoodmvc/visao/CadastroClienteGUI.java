@@ -7,8 +7,8 @@ package forfoodmvc.visao;
 
 import forfoodmvc.controle.ClienteControle;
 import forfoodmvc.controle.PratoControle;
-import forfoodmvc.modelo.Cliente;
-import forfoodmvc.modelo.Prato;
+import forfoodmvc.modeloAntigo.Cliente;
+import forfoodmvc.modeloAntigo.Prato;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
