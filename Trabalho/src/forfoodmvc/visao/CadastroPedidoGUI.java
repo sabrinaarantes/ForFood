@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -34,6 +35,11 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
 
         preencheComboFunc();
         preencheComboPrato();
+        AutoCompleteDecorator.decorate(this.jComboBoxFuncionario);
+        AutoCompleteDecorator.decorate(this.jComboBoxPrato);
+        AutoCompleteDecorator.decorate(this.jComboBoxNumeroMesa);
+        AutoCompleteDecorator.decorate(this.jComboBoxQuantidade);
+        AutoCompleteDecorator.decorate(this.jComboBoxPago);
         listar();
 
     }
@@ -96,6 +102,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         jLabel6.setText("Codigo do Prato:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 77, 84, -1));
 
+        jComboBoxNumeroMesa.setEditable(true);
         jComboBoxNumeroMesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9 ", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", " " }));
         jComboBoxNumeroMesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,9 +111,16 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         });
         jPanel1.add(jComboBoxNumeroMesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 13, 393, -1));
 
+        jComboBoxPago.setEditable(true);
         jComboBoxPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Não", "Sim" }));
+        jComboBoxPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPagoActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBoxPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 381, 20));
 
+        jComboBoxFuncionario.setEditable(true);
         jComboBoxFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxFuncionarioActionPerformed(evt);
@@ -117,6 +131,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         jLabel7.setText("Valor Total Pedido:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 90, -1));
 
+        jComboBoxPrato.setEditable(true);
         jComboBoxPrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         jComboBoxPrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +160,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         jLabel9.setText("Quantidade:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 87, -1, -1));
 
+        jComboBoxQuantidade.setEditable(true);
         jComboBoxQuantidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "100" }));
         jPanel1.add(jComboBoxQuantidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 74, 54, 30));
 
@@ -463,6 +479,10 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jComboBoxPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxPagoActionPerformed
 
     /**
      * @param args the command line arguments
