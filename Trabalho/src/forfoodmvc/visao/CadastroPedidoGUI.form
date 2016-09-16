@@ -86,6 +86,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxNumeroMesa">
           <Properties>
+            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="51">
                 <StringItem index="0" value="1"/>
@@ -156,6 +157,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxPago">
           <Properties>
+            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
                 <StringItem index="0" value="N&#xe3;o"/>
@@ -163,6 +165,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxPagoActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -174,6 +179,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxFuncionario">
           <Properties>
+            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
@@ -202,6 +208,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxPrato">
           <Properties>
+            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="1">
                 <StringItem index="0" value=" "/>
@@ -280,6 +287,7 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxQuantidade">
           <Properties>
+            <Property name="editable" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="9">
                 <StringItem index="0" value="1"/>

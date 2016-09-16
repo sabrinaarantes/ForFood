@@ -18,6 +18,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -28,7 +29,6 @@ public class CadastroFunGUI extends javax.swing.JFrame {
     Scanner entrada = new Scanner(System.in);
     ArrayList<Funcionario> AL = new ArrayList<>();
     CargoControle cargoControl = new CargoControle();
-
     /**
      * Creates new form FrmModeloGUI
      */
@@ -36,7 +36,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
 
         initComponents();
         preencherComboBox();
-
+    AutoCompleteDecorator.decorate(this.jComboBoxCargo);
         listar();
     }
 
@@ -102,6 +102,8 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         });
 
         jLabel7.setText("Cargo:");
+
+        jComboBoxCargo.setEditable(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
