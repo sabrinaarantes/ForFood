@@ -13,18 +13,19 @@ public class Funcionario  implements java.io.Serializable {
 
      private Integer funCodigo;
      private Cargo cargo;
+     private int Cargo_carCodigo;
      private String funNome;
      private String funEndereco;
      private int funFone;
      private String funSenha;
-     private String funCpf;
+     private int funCpf;
      private Set pedidos = new HashSet(0);
 
     public Funcionario() {
     }
 
-	
-    public Funcionario(Cargo cargo, String funNome, String funEndereco, int funFone, String funSenha, String funCpf) {
+    public Funcionario(Integer funCodigo, Cargo cargo, String funNome, String funEndereco, int funFone, String funSenha, int funCpf) {
+        this.funCodigo = funCodigo;
         this.cargo = cargo;
         this.funNome = funNome;
         this.funEndereco = funEndereco;
@@ -32,72 +33,83 @@ public class Funcionario  implements java.io.Serializable {
         this.funSenha = funSenha;
         this.funCpf = funCpf;
     }
-    public Funcionario(Cargo cargo, String funNome, String funEndereco, int funFone, String funSenha, String funCpf, Set pedidos) {
-       this.cargo = cargo;
-       this.funNome = funNome;
-       this.funEndereco = funEndereco;
-       this.funFone = funFone;
-       this.funSenha = funSenha;
-       this.funCpf = funCpf;
-       this.pedidos = pedidos;
+
+    public int getCargo_carCodigo() {
+        return Cargo_carCodigo;
     }
-   
-    public Integer getFunCodigo() {
-        return this.funCodigo;
+
+    public void setCargo_carCodigo(int Cargo_carCodigo) {
+        this.Cargo_carCodigo = Cargo_carCodigo;
     }
     
+    
+
+    public Integer getFunCodigo() {
+        return funCodigo;
+    }
+
     public void setFunCodigo(Integer funCodigo) {
         this.funCodigo = funCodigo;
     }
+
     public Cargo getCargo() {
-        return this.cargo;
+        return cargo;
     }
-    
+
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
+
     public String getFunNome() {
-        return this.funNome;
+        return funNome;
     }
-    
+
     public void setFunNome(String funNome) {
         this.funNome = funNome;
     }
+
     public String getFunEndereco() {
-        return this.funEndereco;
+        return funEndereco;
     }
-    
+
     public void setFunEndereco(String funEndereco) {
         this.funEndereco = funEndereco;
     }
+
     public int getFunFone() {
-        return this.funFone;
+        return funFone;
     }
-    
+
     public void setFunFone(int funFone) {
         this.funFone = funFone;
     }
+
     public String getFunSenha() {
-        return this.funSenha;
+        return funSenha;
     }
-    
+
     public void setFunSenha(String funSenha) {
         this.funSenha = funSenha;
     }
-    public String getFunCpf() {
-        return this.funCpf;
+
+    public int getFunCpf() {
+        return funCpf;
     }
-    
-    public void setFunCpf(String funCpf) {
+
+    public void setFunCpf(int funCpf) {
         this.funCpf = funCpf;
     }
+
     public Set getPedidos() {
-        return this.pedidos;
+        return pedidos;
     }
-    
+
     public void setPedidos(Set pedidos) {
         this.pedidos = pedidos;
     }
+
+	
+  
 
 
 

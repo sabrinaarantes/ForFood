@@ -7,11 +7,11 @@ package forfoodmvc.visao;
 
 import forfoodmvc.controle.FuncionarioControle;
 import forfoodmvc.controle.PratoControle;
-import forfoodmvc.modeloAntigo.Funcionario;
-import forfoodmvc.modeloAntigo.Pedido;
+import forfoodmvc.modelo.Funcionario;
+import forfoodmvc.modelo.Pedido;
 import forfoodmvc.controle.PedidoControle;
 
-import forfoodmvc.modeloAntigo.Prato;
+import forfoodmvc.modelo.Prato;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -504,7 +504,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
     private void preencheComboFunc() {
         FuncionarioControle fc = new FuncionarioControle();
         ArrayList<Funcionario> arrF = new ArrayList<Funcionario>();
-        arrF = fc.listarFuncionarioCodigo();
+        arrF = fc.listarFuncionario();
 
         for (Funcionario arrF1 : arrF) {
             String dadosFunc = String.valueOf(arrF1.getCodigo()) + "-" + arrF1.getNome();

@@ -5,8 +5,8 @@
  */
 package forfoodmvc.controle;
 
-import forfoodmvc.modeloAntigo.Cargo;
-import forfoodmvc.modeloAntigo.CargoDAO;
+import forfoodmvc.modelo.Cargo;
+import forfoodmvc.modelo.CargoDAO;
 import java.util.ArrayList;
 
 /**
@@ -14,19 +14,19 @@ import java.util.ArrayList;
  * @author Alunos
  */
 public class CargoControle {
-     public boolean adiciona(Cargo c) {
+     public void adiciona(Cargo c) {
         CargoDAO cdao = new CargoDAO();
-        return cdao.adiciona(c);
+        cdao.cadastrar(c);
     }
 
     public ArrayList<Cargo> listarCargo() {
         CargoDAO cDAO = new CargoDAO();
-        return cDAO.listarCargos();
+        return cDAO.listar();
     }
 
     public void altera(Cargo g) {
      CargoDAO cDAO = new CargoDAO();
-     cDAO.atualizar(g);
+     cDAO.alterar(g);
         
         
     }

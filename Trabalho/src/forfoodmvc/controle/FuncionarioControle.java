@@ -5,8 +5,9 @@
  */
 package forfoodmvc.controle;
 
-import forfoodmvc.modeloAntigo.Funcionario;
-import forfoodmvc.modeloAntigo.FuncionarioDAO;
+import forfoodmvc.modelo.Cargo;
+import forfoodmvc.modelo.Funcionario;
+import forfoodmvc.modelo.FuncionarioDAO;
 import java.util.ArrayList;
 
 /**
@@ -15,46 +16,35 @@ import java.util.ArrayList;
  */
 public class FuncionarioControle {
 
-     public ArrayList<Funcionario> listarSenhaCpfFuncionario() {
-        FuncionarioDAO fdao = new FuncionarioDAO();
-        return fdao.listarSenhaCpfCodigo();
-    }
      
     public boolean entrarConta(String cpf, String senha){
         return new FuncionarioDAO().verificaConta(cpf, senha);
     }
     
-    public boolean adiciona(String cpf, String senha, String nome, String endereco, int telefone, int carcod, String carnome) {
+    public void adiciona(int cpf, String senha, String nome, String endereco, int telefone,Cargo cargo) {
         Funcionario f = new Funcionario();
-        f.setCpf(cpf);
-        f.setSenha(Criptografia.criptografar(senha));
-        f.setTelefone(telefone);
-        f.setCarCodigo(carcod);
-        f.setCarNome(carnome);
-        f.setNome(nome);
-        f.setEndereco(endereco);
+        f.setFunCpf(cpf);
+        f.setFunSenha(Criptografia.criptografar(senha));
+        f.setFunFone(telefone);
+        f.setFunNome(nome);
+        f.setFunEndereco(endereco);
+        f.setCargo(cargo);
         FuncionarioDAO fdao = new FuncionarioDAO();
-        return fdao.adiciona(f);
+        fdao.cadastrar(f);
     }
 
     public ArrayList<Funcionario> listarFuncionario() {
         FuncionarioDAO fdao = new FuncionarioDAO();
-        return fdao.listarFuncionario();
+        return fdao.listar();
     }
-    
-     public ArrayList listarFuncionarioCodigo() {
-         FuncionarioDAO fd = new FuncionarioDAO();
-         return fd.listarFuncionarioCodigo();
-     }
-     
      public void alterar(Funcionario f){
         FuncionarioDAO cDAO = new FuncionarioDAO();
-        cDAO.atualizar(f);
+        cDAO.alterar(f);
     }
     
      public void exclui(Funcionario c) {
         FuncionarioDAO cdao = new FuncionarioDAO();
-        cdao.deleta(c.getCpf());
+        cdao.deletar(c.getFunCpf());
     }
     
 }

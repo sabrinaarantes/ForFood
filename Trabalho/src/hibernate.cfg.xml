@@ -6,13 +6,12 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/forfood?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-<<<<<<< HEAD
-    <mapping resource="forfoodmvc/modelo/Pedido.hbm.xml"/>
-    <mapping resource="forfoodmvc/modelo/Cliente.hbm.xml"/>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="forfoodmvc/modelo/Funcionario.hbm.xml"/>
     <mapping resource="forfoodmvc/modelo/Cargo.hbm.xml"/>
+    <mapping resource="forfoodmvc/modelo/Cliente.hbm.xml"/>
+    <mapping resource="forfoodmvc/modelo/Pedido.hbm.xml"/>
     <mapping resource="forfoodmvc/modelo/Prato.hbm.xml"/>
-=======
->>>>>>> 3c508116b95cd24e5e0f8b9f81f8599f9faf0fe0
   </session-factory>
 </hibernate-configuration>

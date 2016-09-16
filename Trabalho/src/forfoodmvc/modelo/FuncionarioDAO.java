@@ -5,17 +5,26 @@
  */
 package forfoodmvc.modelo;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.transform.Transformers;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Alunos
  */
 public class FuncionarioDAO {
+    
+     private Connection con;
     
      public void cadastrar(Funcionario cli) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();

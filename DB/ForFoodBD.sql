@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `ForFood`.`Funcionario` (
   `funFone` INT NOT NULL,
   `funSenha` VARCHAR(45) NOT NULL,
   `Cargo_carCodigo` INT NOT NULL,
-  `funCpf` VARCHAR(45) NOT NULL,
+  `funCpf` INT NOT NULL,
   PRIMARY KEY (`funCodigo`),
   CONSTRAINT `fk_Funcionario_Cargo1`
     FOREIGN KEY (`Cargo_carCodigo`)

@@ -9,9 +9,9 @@ import forfoodmvc.controle.CargoControle;
 import forfoodmvc.controle.Criptografia;
 import forfoodmvc.controle.FuncionarioControle;
 import forfoodmvc.controle.PedidoControle;
-import forfoodmvc.modeloAntigo.Cargo;
-import forfoodmvc.modeloAntigo.Funcionario;
-import forfoodmvc.modeloAntigo.Pedido;
+import forfoodmvc.modelo.Cargo;
+import forfoodmvc.modelo.Funcionario;
+import forfoodmvc.modelo.Pedido;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.ComboBoxModel;
@@ -25,16 +25,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CadastroFunGUI extends javax.swing.JFrame {
 
-    Scanner entrada = new Scanner (System.in);
+    Scanner entrada = new Scanner(System.in);
     ArrayList<Funcionario> AL = new ArrayList<>();
     CargoControle cargoControl = new CargoControle();
-    
 
     /**
      * Creates new form FrmModeloGUI
      */
     public CadastroFunGUI() {
-        
+
         initComponents();
         preencherComboBox();
 
@@ -331,36 +330,24 @@ public class CadastroFunGUI extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
 
-       
         Funcionario f = new Funcionario();
-        f.setCarCodigo((1 + jComboBoxCargo.getSelectedIndex()));
-        f.setNome(jTextFieldNome.getText());
-        f.setTelefone(Integer.parseInt(jTextFieldTelefone.getText()));
-        f.setCpf(jTextFieldCpf.getText());
-        f.setEndereco(jTextFieldEndereco.getText());
-        f.setSenha(Criptografia.criptografar(jPasswordFieldSenha.getText()));
-        
-        //-------------------------------------------------
-        String cargo = (String) jComboBoxCargo.getSelectedItem();
-        String[] parts = cargo.split("-");
-        int cod = Integer.parseInt(parts[0]);
-        System.out.println(cod);
-        f.setCarCodigo(cod);
-        System.out.println(cod);
-        
-        
-        //--------------------------------------------------
-        
-        f.setCarNome(jComboBoxCargo.getSelectedItem().toString());
+        //f.setCarCodigo((1 + jComboBoxCargo.getSelectedIndex()));
+        f.setFunNome(jTextFieldNome.getText());
+        f.setFunFone(/*Integer.parseInt(jTextFieldTelefone.getText())*/120);
+        f.setFunCpf(Integer.parseInt(jTextFieldCpf.getText()));
+        f.setFunEndereco(jTextFieldEndereco.getText());
+        f.setFunSenha(Criptografia.criptografar(jPasswordFieldSenha.getText()));
+        f.setCargo(encontraCargo());
+        f.setCargo_carCodigo(encontrarCodigoCargo());
         FuncionarioControle funcionarioControl = new FuncionarioControle();
-        boolean verifica = funcionarioControl.adiciona(f.getCpf(), f.getSenha(), f.getEndereco(), f.getNome(), f.getTelefone(), f.getCarCodigo(), f.getCarNome());
+        funcionarioControl.adiciona(f.getFunCpf(), f.getFunSenha(), f.getFunEndereco(), f.getFunNome(), f.getFunFone(), f.getCargo());
         AL.add(f);
         preencherTabela(AL);
 
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
-         jTextFieldNome.setText("");
+        jTextFieldNome.setText("");
         jTextFieldTelefone.setText("");
         jTextFieldCpf.setText("");
         jTextFieldEndereco.setText("");
@@ -374,10 +361,10 @@ public class CadastroFunGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonReturnActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-         int i = jTable1.getSelectedRow();
+        int i = jTable1.getSelectedRow();
         Funcionario c = new Funcionario();
-        c.setNome(jTable1.getValueAt(i, 0).toString());
-        c.setCpf(jTable1.getValueAt(i, 3).toString());
+        c.setFunNome(jTable1.getValueAt(i, 0).toString());
+        c.setFunCpf(Integer.parseInt(jTable1.getValueAt(i, 3).toString()));
         ((DefaultTableModel) jTable1.getModel()).removeRow(i);
         FuncionarioControle funcionarioControl = new FuncionarioControle();
         funcionarioControl.exclui(c);
@@ -385,27 +372,25 @@ public class CadastroFunGUI extends javax.swing.JFrame {
 
     private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
         // TODO add your handling code here:
-        String cargo = (String) jComboBoxCargo.getSelectedItem();
-        String[] parts = cargo.split("-");
-        int cod = Integer.parseInt(parts[0]);
-        System.out.println(cod);
+   
+        
         int index = jTable1.getSelectedRow();
         jTable1.setValueAt(jTextFieldNome.getText(), index, 0);
         jTable1.setValueAt(jTextFieldTelefone.getText(), index, 1);
         jTable1.setValueAt(jTextFieldCpf.getText(), index, 2);
         jTable1.setValueAt(jTextFieldEndereco.getText(), index, 3);
-        jTable1.setValueAt(cod, index, 4);
-        
+        jTable1.setValueAt(encontraCargo(), index, 4);
+
         Funcionario f = new Funcionario();
-        
-        f.setNome(jTextFieldNome.getText());
-        f.setTelefone(Integer.parseInt(jTextFieldTelefone.getText()));
-        f.setCpf(jTextFieldCpf.getText());
-        f.setEndereco(jTextFieldEndereco.getText());
-        f.setCarCodigo(cod);
-        f.setSenha(jPasswordFieldSenha.getText().toString());
-        f.setCodigo((int) jTable1.getValueAt(index, 5));
-        
+
+        f.setFunNome(jTextFieldNome.getText());
+        f.setFunFone(Integer.parseInt(jTextFieldTelefone.getText()));
+        f.setFunCpf(Integer.parseInt(jTextFieldCpf.getText()));
+        f.setFunEndereco(jTextFieldEndereco.getText());
+        f.setCargo(encontraCargo());
+        f.setFunSenha(jPasswordFieldSenha.getText().toString());
+        f.setFunCodigo((int) jTable1.getValueAt(index, 5));
+
         System.out.println(f.toString());
         FuncionarioControle funcionarioControl = new FuncionarioControle();
         funcionarioControl.alterar(f);
@@ -417,14 +402,14 @@ public class CadastroFunGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldSenhaActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-            int i = jTable1.getSelectedRow();
+        int i = jTable1.getSelectedRow();
         int g = 0;
         jTextFieldNome.setText(jTable1.getValueAt(i, 0).toString());
         jTextFieldTelefone.setText(jTable1.getValueAt(i, 1).toString());
         jTextFieldEndereco.setText(jTable1.getValueAt(i, 2).toString());
         jTextFieldCpf.setText(jTable1.getValueAt(i, 3).toString());
         for (int x = 0; x < cargoControl.listarCargo().size(); x++) {
-            if (cargoControl.listarCargo().get(x).getNome().equals(jTable1.getValueAt(i, 4).toString())) {
+            if (cargoControl.listarCargo().get(x).getCarNome().equals(jTable1.getValueAt(i, 4).toString())) {
                 g = x;
                 jComboBoxCargo.setSelectedIndex(g);
             }
@@ -443,36 +428,35 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         modeloTable = (DefaultTableModel) jTable1.getModel();
 
         //Aqui verifico se a jTable tem algum registo se tiver eu deleto
-         while (modeloTable.getRowCount() > 0) {
+        while (modeloTable.getRowCount() > 0) {
             modeloTable.removeRow(0);
         }
         //Aqui eu adiciono cada linha da lista na jTable
         for (Funcionario c : funcionario) {
-            modeloTable.addRow(new Object[]{c.getNome(), c.getTelefone(), c.getEndereco(), c.getCpf(), c.getCarCodigo(), c.getCodigo()});
+            modeloTable.addRow(new Object[]{c.getFunNome(), c.getFunFone(), c.getFunEndereco(), c.getFunCpf(), c.getCargo(), c.getFunCodigo()});
         }
 
     }
-      
-   private void preencherComboBox() {
 
-       CargoControle fc = new CargoControle();
+    private void preencherComboBox() {
+
+        CargoControle fc = new CargoControle();
         ArrayList<Cargo> arrF = new ArrayList<Cargo>();
         arrF = fc.listarCargo();
 
         for (Cargo arrF1 : arrF) {
-            String dadosFunc = String.valueOf(arrF1.getCodigo()) + "-" + arrF1.getNome();
+            String dadosFunc = String.valueOf(arrF1.getCarCodigo()) + "-" + arrF1.getCarNome();
             jComboBoxCargo.addItem(dadosFunc);
-            
+
         }
-       
-       
-       /*
+
+        /*
         String[] array = new String[cargo.size()];
         for (int i = 0; i < array.length; i++) {
             array[i] = cargo.get(i).getNome();
         }
         jComboBox1.setModel(new DefaultComboBoxModel(array));
-*/
+         */
     }
 
     public static void main(String args[]) {
@@ -534,9 +518,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 
-
-
-private void listar() {
+    private void listar() {
         FuncionarioControle pedControl = new FuncionarioControle();
         AL = pedControl.listarFuncionario();
         preencherTabela(AL);
@@ -545,4 +527,32 @@ private void listar() {
         }
     }
 
+    private Cargo encontraCargo() {
+            Cargo c1 = new Cargo();
+            String cargo = (String) jComboBoxCargo.getSelectedItem();
+            String[] parts = cargo.split("-");
+            int cod = Integer.parseInt(parts[0]);
+            System.out.println(cod);
+            CargoControle controle = new CargoControle();
+            ArrayList<Cargo> arrC = new ArrayList<Cargo>();
+            arrC = controle.listarCargo();
+            
+                for (int j = 0; j < arrC.size(); j++) {
+                if (cod == arrC.get(j).getCarCodigo()) {
+                    c1 = arrC.get(j);
+                    return c1;
+                }
+            }
+            return null;
+     }
+    
+    private int encontrarCodigoCargo(){
+        String cargo = (String) jComboBoxCargo.getSelectedItem();
+            String[] parts = cargo.split("-");
+            int cod = Integer.parseInt(parts[0]);
+            System.out.println(cod);
+            return cod;
+    }
 }
+
+
