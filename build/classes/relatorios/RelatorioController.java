@@ -55,10 +55,6 @@ public class RelatorioController {
         params.put("dataConsulta", data);
         geraRelatorio("Fluxojrxml", params, frame);
     }
-    
-    public static void geraRelatorioPratos(JFrame frame){
-        geraRelatorio("RelatorioPratos", null, frame);
-    }
 
    
 
