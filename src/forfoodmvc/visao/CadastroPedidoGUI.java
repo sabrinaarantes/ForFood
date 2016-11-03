@@ -28,13 +28,13 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  * @author Alunos
  */
 public class CadastroPedidoGUI extends javax.swing.JFrame {
-    
-      SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
+
+    SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 
     private DefaultListModel modelo = new DefaultListModel();
     List<Pedido> listarPedido;
     List<Prato> listP = null;
-    List<Integer> codPratos =  new ArrayList<>();
+    List<Integer> codPratos = new ArrayList<>();
     //ArrayList<Integer> teste = new ArrayList<>();
 
     /**
@@ -107,7 +107,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 16, -1, -1));
 
         jLabel3.setText("Pedido Pago?");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 80, 10));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 386, 80, -1));
 
         jLabel4.setText("Funcionário:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 44, 84, -1));
@@ -391,7 +391,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         String linhaCombo = (String) jComboBoxPrato.getSelectedItem();
         String[] parts = linhaCombo.split("-");
         int cod = Integer.parseInt(parts[0]);
-  
+
         float preco = 0;
         for (Prato arrP1 : arrP) {
             if (arrP1.getPraCodigo() == cod) {
@@ -401,8 +401,8 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
                 float novoPreco = precoAntigo + (preco * quantidade);
                 jTextFieldValorFinaol.setText(String.valueOf(novoPreco));
                 codPratos.add(cod);
-                System.out.println("==============="+ codPratos.size());
-               break;
+                System.out.println("===============" + codPratos.size());
+                break;
             }
         }
         modelo.addElement(linhaCombo);
@@ -439,7 +439,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         //---------------------------------------------------------------------------------
         p.setFuncionario(encontraFuncionario());
         //---------------------------------------------------------------------------------
-        p.setPedData(Date.valueOf(dt.format(dateDe2.getDate())) );
+        p.setPedData(Date.valueOf(dt.format(dateDe2.getDate())));
         //---------------------------------------------------------------------------------
         p.setPedQuantidade(Integer.parseInt((String) jComboBoxQuantidade.getSelectedItem()));
         //---------------------------------------------------------------------------------
@@ -470,7 +470,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         int linha = jTable2.getSelectedRow(); //retorna um inteiro
 
-        dateDe2.setDate((Date)jTable2.getValueAt(linha, 0));
+        dateDe2.setDate((Date) jTable2.getValueAt(linha, 0));
         jTextFieldValorFinaol.setText((String) jTable2.getValueAt(linha, 3).toString());
         //jTextFieldTempo.setText((String)jTable2.getValueAt(linha, 4).toString());
     }//GEN-LAST:event_jTable2MouseClicked
@@ -579,8 +579,10 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         arrF = fc.listarControle();
 
         for (Funcionario arrF1 : arrF) {
-            String dadosFunc = String.valueOf(arrF1.getFunCodigo()) + "-" + arrF1.getFunNome();
-            jComboBoxFuncionario.addItem(dadosFunc);
+            if (arrF1.getCargo().getCarCodigo() == 1) {
+                String dadosFunc = String.valueOf(arrF1.getFunCodigo()) + "-" + arrF1.getFunNome();
+                jComboBoxFuncionario.addItem(dadosFunc);
+            }
         }
     }
 
@@ -595,7 +597,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
             jComboBoxPrato.addItem(dadosFunc);
         }
     }
-    
+
     //preenche o comboBox de Pratos com os dados do banco
     private void preencheComboClinte() {
         ClienteControle fc = new ClienteControle();
@@ -613,34 +615,32 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
 
         //List<Prato> pratos = preencherPratos(codPratos);
         //if (pratos != null) {
-            DefaultTableModel modeloTable = new DefaultTableModel();
-            modeloTable = (DefaultTableModel) jTable2.getModel();
-            String x = null;
-            String y = null;
+        DefaultTableModel modeloTable = new DefaultTableModel();
+        modeloTable = (DefaultTableModel) jTable2.getModel();
+        String x = null;
+        String y = null;
 
-            while (modeloTable.getRowCount() > 0) {
-                modeloTable.removeRow(0);
-            }
-
-            if (pedido != null) {
-                //System.out.println("================" + pedido.size());
-                for (Pedido p : pedido) {
-                    //System.out.println(" ======================= "+p.toString());
-
-                    if (p.isPedStatus() == true) {
-                        x = "Sim";
-
-                    } else if (p.isPedStatus() == false) {
-                        x = "Não";
-                    }
-
-                    modeloTable.addRow(new Object[]{p.getPedData(), p.getPedMesa(), p.getFuncionario().getFunCodigo(), p.getPedValorTotal(), x, p.getPratos().toString(), p.getPedCodigo()});
-
-                }
-            }
+        while (modeloTable.getRowCount() > 0) {
+            modeloTable.removeRow(0);
         }
 
-    
+        if (pedido != null) {
+            //System.out.println("================" + pedido.size());
+            for (Pedido p : pedido) {
+                //System.out.println(" ======================= "+p.toString());
+
+                if (p.isPedStatus() == true) {
+                    x = "Sim";
+
+                } else if (p.isPedStatus() == false) {
+                    x = "Não";
+                }
+
+                modeloTable.addRow(new Object[]{p.getPedData(), p.getPedMesa(), p.getFuncionario().getFunCodigo(), p.getPedValorTotal(), x, p.getPratos().toString(), p.getPedCodigo()});
+
+            }
+        }
+    }
 
     private void listar() {
         PedidoControle pedControl = new PedidoControle();
@@ -648,7 +648,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         //System.out.println("================" + listarPedido.size());
         preencherTabela(listarPedido);
         for (Pedido listarPedido1 : listarPedido) {
-           // System.out.println(listarPedido1.toString());
+            // System.out.println(listarPedido1.toString());
         }
     }
 
@@ -657,7 +657,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         String funcionario = (String) jComboBoxFuncionario.getSelectedItem();
         String[] parts = funcionario.split("-");
         int cod = Integer.parseInt(parts[0]);
-       // System.out.println(cod);
+        // System.out.println(cod);
         FuncionarioControle controle = new FuncionarioControle();
         List<Funcionario> arrC = null;
         arrC = controle.listarControle();
@@ -700,7 +700,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
 
         if (pratosJlist != null) {
             System.out.println("==========================enntrou IF");
-            for (int i = 0; i < listP.size(); i++) {
+            for (int i = 0; i < pratosJlist.size(); i++) {
                 for (Prato prato : listP) {
                     if (pratosJlist.get(i) == prato.getPraCodigo()) {
                         p.setPraCodigo(prato.getPraCodigo());
@@ -708,7 +708,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
                         p.setPraNome(prato.getPraNome());
                         p.setPraPreco(prato.getPraPreco());
                         p.setPraTempo(prato.getPraTempo());
-                        System.out.println("==============="+ p.toString()+"================");
+                        System.out.println("===============" + p.toString() + "================");
                         arrP.add(prato);
                         break;
                     }

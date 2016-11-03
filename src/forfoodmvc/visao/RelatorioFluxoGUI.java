@@ -37,6 +37,7 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
         dateDe2 = new org.jdesktop.swingx.JXDatePicker();
         jButtonGerar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +66,10 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel2.setText("Fluxo de Caixa");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,13 +83,18 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(jButtonGerar)
                         .addGap(100, 100, 100)
-                        .addComponent(jButtonVoltar)))
+                        .addComponent(jButtonVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel2)))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(panelDados2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -144,13 +154,10 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jdesktop.swingx.JXDatePicker dateDe;
-    private org.jdesktop.swingx.JXDatePicker dateDe1;
     private org.jdesktop.swingx.JXDatePicker dateDe2;
     private javax.swing.JButton jButtonGerar;
     private javax.swing.JButton jButtonVoltar;
-    private javax.swing.JPanel panelDados;
-    private javax.swing.JPanel panelDados1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel panelDados2;
     // End of variables declaration//GEN-END:variables
 }
