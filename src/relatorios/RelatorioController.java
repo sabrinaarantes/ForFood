@@ -59,6 +59,17 @@ public class RelatorioController {
     public static void geraRelatorioPratos(JFrame frame){
         geraRelatorio("RelatorioPratos", null, frame);
     }
+     public static void geraRelatorioPedidoDia(String data, JFrame frame) {
+        HashMap params = new HashMap<>();
+        params.put("data", data);
+        geraRelatorio("PedidosDia", params, frame);
+    }
+    public static void geraFuncionarioMes(String data, String data2, JFrame frame) {
+        HashMap params = new HashMap<>();
+        params.put("dataInicio", data);
+        params.put("dataFinal", data2);
+        geraRelatorio("Funcionario", params, frame);
+    }
 
    
 
