@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-11-10T09:49:24 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Coffee_Landscape_1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="Zm9yZm9vZC5wcmF0byBBUyAsMTUsODksODFkMmZkMzMtZmVhMC00YjM3LTk1MzctNDVjNzIzZjVj&#xA;YTc5O2ZvcmZvb2QucGVkaWRvIEFTICw0MTIsOTIsZmVkNzY1YzUtMGZhYS00M2M3LTk3NzktZTMy&#xA;NGQyYjY4YWMxO2ZvcmZvb2QucHJhdG9fcGVkaWRvIEFTICwxNjcsOTIsMmRkY2ZmMDItNzBmNy00&#xA;YjA0LWJiNzktOGRhYjE3M2YwMjlkOw=="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="dataInicio" class="java.util.Date"/>
+	<parameter name="dataFinal" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT forfood.prato.praNome,
+	forfood.prato.praDescricao,
+	forfood.prato.praTempo,
+	forfood.prato.praPreco,
+	count( forfood.prato_pedido.`pedCodigo`) AS pedidos
+FROM forfood.prato_pedido
+	INNER JOIN forfood.prato ON 
+	 forfood.prato_pedido.`praCodigo` = forfood.prato.`praCodigo` 
+	INNER JOIN forfood.pedido ON 
+	 forfood.prato_pedido.`pedCodigo` = forfood.pedido.`pedCodigo`
+	 WHERE 
+	 forfood.pedido.`pedData` >= $P{dataInicio} 
+	 AND forfood.pedido.`pedData` <= $P{dataFinal} 
+GROUP BY forfood.prato.praCodigo
+ORDER BY pedidos DESC
+LIMIT 0,1]]>
+	</queryString>
+	<field name="praNome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="praDescricao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="praTempo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="praPreco" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pedidos" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="127" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="1c003177-754c-448f-8ce1-16868856f545"/>
+				<imageExpression><![CDATA["http://i.imgur.com/vEd0ZMQ.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="180" y="0" width="622" height="120" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Relatório de pratos mais vendidos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="640" y="9" width="160" height="15" forecolor="#736343" uuid="34e4293c-bfa8-4a4e-be53-e0e6a67c7722"/>
+				<text><![CDATA[Pedidos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="9" width="180" height="15" forecolor="#736343" uuid="ff827f4b-6e5c-424b-965f-c5282dfe196c"/>
+				<text><![CDATA[Preço:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="290" y="8" width="170" height="15" forecolor="#736343" uuid="b55e9512-738e-4319-9fbd-1bd3145fb093"/>
+				<text><![CDATA[Tempo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="141" y="9" width="149" height="15" forecolor="#736343" uuid="f6b70e2c-68a8-49eb-8128-ebc92a92b26a"/>
+				<text><![CDATA[Descrição:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="8" width="139" height="16" forecolor="#736343" uuid="9062ba48-fcf2-4752-98fd-c79944d175ca"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="fa7cec56-4ec1-48e6-a26e-7266a995d174"/>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="fa5e88d5-a011-4e32-8f12-ce923f903111"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="140" y="8" width="149" height="15" uuid="4064c8b5-fb5e-4811-9728-d7d7c87d32db"/>
+					<textFieldExpression><![CDATA[$F{praDescricao}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="290" y="9" width="170" height="15" uuid="30ff7263-6f28-423b-8ace-48b4ce481deb"/>
+					<textFieldExpression><![CDATA[$F{praTempo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="461" y="9" width="179" height="15" uuid="d90a90c7-a708-4ff7-bfe2-919b52ee3c17"/>
+					<textFieldExpression><![CDATA[$F{praPreco}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="641" y="5" width="159" height="15" uuid="82b45527-36ed-46d2-a7fd-932543f6cff2"/>
+					<textFieldExpression><![CDATA[$F{pedidos}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="1" y="8" width="139" height="16" uuid="d02f913e-0036-44ad-89e0-41b0dad6e828"/>
+					<textFieldExpression><![CDATA[$F{praNome}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="15" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

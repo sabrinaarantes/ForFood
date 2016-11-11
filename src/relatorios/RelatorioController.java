@@ -70,6 +70,12 @@ public class RelatorioController {
         params.put("dataFinal", data2);
         geraRelatorio("Funcionario", params, frame);
     }
+    public static void geraPratoVendido(String data, String data2, JFrame frame) {
+        HashMap params = new HashMap<>();
+        params.put("dataInicio", data);
+        params.put("dataFinal", data2);
+        geraRelatorio("RelatorioPratoVendido", params, frame);
+    }
 
    
 
