@@ -76,6 +76,10 @@ public class RelatorioController {
         params.put("dataFinal", data2);
         geraRelatorio("RelatorioPratoVendido", params, frame);
     }
+    
+    public static void geraRelatorioClientes(JFrame frame){
+        geraRelatorio("Clientes", null, frame);
+    }
 
    
 

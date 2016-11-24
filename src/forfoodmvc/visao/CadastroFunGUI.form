@@ -269,8 +269,8 @@
                   <Table columnCount="6" rowCount="0">
                     <Column editable="true" title="Nome" type="java.lang.String"/>
                     <Column editable="true" title="Telefone" type="java.lang.Integer"/>
-                    <Column editable="true" title="CPF" type="java.lang.String"/>
                     <Column editable="true" title="Endere&#xe7;o" type="java.lang.String"/>
+                    <Column editable="true" title="CPF" type="java.lang.String"/>
                     <Column editable="true" title="Cargo" type="java.lang.String"/>
                     <Column editable="true" title="Codigo Funcionario" type="java.lang.Integer"/>
                   </Table>

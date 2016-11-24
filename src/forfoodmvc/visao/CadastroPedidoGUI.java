@@ -503,7 +503,26 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
             }
         }
         //--------------------------------------------------------------------------
-
+        
+        String pratos = ((String) jTable2.getValueAt(linha, 5).toString());
+        String[] parts3 = pratos.split(", ");
+        char comparar = ' ';
+        
+        for (int i = 0; i < 10; i++) {
+            if (parts3[i].charAt(i) == comparar) {
+                String x = parts3[i];
+                x.replace('[', comparar);
+                
+                
+            }
+             
+                      
+        }
+        
+       
+        
+        
+        //--------------------------------------------------------------------------
         dateDe2.setDate((Date) jTable2.getValueAt(linha, 0));
         jTextFieldValorFinaol.setText((String) jTable2.getValueAt(linha, 3).toString());
         //jTextFieldTempo.setText((String)jTable2.getValueAt(linha, 4).toString());
