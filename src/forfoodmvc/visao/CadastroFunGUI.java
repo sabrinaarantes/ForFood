@@ -95,7 +95,24 @@ public class CadastroFunGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Telefone:");
 
+        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelefoneActionPerformed(evt);
+            }
+        });
+        jTextFieldTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefoneKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Endereço:");
+
+        jTextFieldCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCpfKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("CPF:");
 
@@ -219,7 +236,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu de Opções", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 0, 51))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu de Opções", 2, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 0, 51))); // NOI18N
 
         jButtonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/SalvarIcone.png"))); // NOI18N
         jButtonSave.setText("Cadastrar");
@@ -472,6 +489,24 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
+
+    private void jTextFieldTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneKeyTyped
+        String caracteres = "0987654321";
+    if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldTelefoneKeyTyped
+
+    private void jTextFieldCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCpfKeyTyped
+        String caracteres = "0987654321";
+    if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldCpfKeyTyped
 
     /**
      * @param args the command line arguments

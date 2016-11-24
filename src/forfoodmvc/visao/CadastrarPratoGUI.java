@@ -86,10 +86,20 @@ public class CadastrarPratoGUI extends javax.swing.JFrame {
                 jTextFieldPrecoActionPerformed(evt);
             }
         });
+        jTextFieldPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPrecoKeyTyped(evt);
+            }
+        });
 
         jTextFieldTempo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTempoActionPerformed(evt);
+            }
+        });
+        jTextFieldTempo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTempoKeyTyped(evt);
             }
         });
 
@@ -398,6 +408,21 @@ public class CadastrarPratoGUI extends javax.swing.JFrame {
        jTextFieldTempo.setText((String)jTable1.getValueAt(linha, 4).toString());
        
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextFieldPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrecoKeyTyped
+       
+    String caracteres = "0987654321";
+    if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldPrecoKeyTyped
+
+    private void jTextFieldTempoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTempoKeyTyped
+       String caracteres = "0987654321";
+    if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldTempoKeyTyped
 
     
     public static void main(String args[]) {

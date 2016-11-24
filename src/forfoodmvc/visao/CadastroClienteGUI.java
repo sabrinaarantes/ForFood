@@ -70,6 +70,28 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
 
         jLabel5.setText("Endereço:");
 
+        jTextFieldCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCpfActionPerformed(evt);
+            }
+        });
+        jTextFieldCpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCpfKeyTyped(evt);
+            }
+        });
+
+        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelefoneActionPerformed(evt);
+            }
+        });
+        jTextFieldTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefoneKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,7 +178,7 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu de Opções", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 0, 51))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu de Opções", 2, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 0, 51))); // NOI18N
 
         jButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/SalvarIcone.png"))); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
@@ -354,6 +376,28 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
         jTextFieldTelefone.setText("");
         jTextFieldEndereco.setText("");
     }//GEN-LAST:event_jButtonDeletarActionPerformed
+
+    private void jTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfActionPerformed
+     
+    }//GEN-LAST:event_jTextFieldCpfActionPerformed
+
+    private void jTextFieldCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCpfKeyTyped
+       String caracteres = "0987654321";
+    if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldCpfKeyTyped
+
+    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
+
+    private void jTextFieldTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneKeyTyped
+        String caracteres = "0987654321";
+    if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldTelefoneKeyTyped
 
     /**
      * @param args the command line arguments

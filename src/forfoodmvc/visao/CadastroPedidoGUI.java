@@ -247,7 +247,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable2);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 486, -1));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 13, 530, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 41, -1, 450));
 
@@ -363,6 +363,9 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, " Cadastro realizado com sucesso!");
         listar();
 
+        modelo.addElement(null);
+        jList1.setModel(modelo);
+
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
@@ -391,6 +394,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         String linhaCombo = (String) jComboBoxPrato.getSelectedItem();
         String[] parts = linhaCombo.split("-");
         int cod = Integer.parseInt(parts[0]);
+        System.out.println("SPLIT" + "\n=====" + parts[1] + "=====");
 
         float preco = 0;
         for (Prato arrP1 : arrP) {
@@ -401,7 +405,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
                 float novoPreco = precoAntigo + (preco * quantidade);
                 jTextFieldValorFinaol.setText(String.valueOf(novoPreco));
                 codPratos.add(cod);
-                System.out.println("===============" + codPratos.size());
+                //System.out.println("===============" + codPratos.size());
                 break;
             }
         }
@@ -457,7 +461,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
 
         p.setPedCodigo((int) jTable2.getValueAt(index, 6));
         PedidoControle pedidoControl = new PedidoControle();
-        pedidoControl.cadastrarControle(p);
+        pedidoControl.removerControle(p);
 
         model.removeRow(index);
 
@@ -468,7 +472,37 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeletarActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+
         int linha = jTable2.getSelectedRow(); //retorna um inteiro
+        //combomesa
+        String mesa = ((String) jTable2.getValueAt(linha, 1).toString());
+        int numMesa = Integer.parseInt(mesa);
+        jComboBoxNumeroMesa.setSelectedIndex(numMesa - 1);
+
+        //-------------------------------------------------------------------------------
+        //comboFunc
+        int tamCombo = jComboBoxFuncionario.getModel().getSize();
+        String vetorCombo[] = new String[tamCombo];
+        for (int i = 0; i < tamCombo; i++) {
+            String aux = jComboBoxFuncionario.getItemAt(i);
+            //split
+            String[] p = aux.split("-");
+            vetorCombo[i] = p[0];
+            ;
+
+        }
+
+        String funcionario = ((String) jTable2.getValueAt(linha, 2).toString());
+        String[] parts = funcionario.split("-");
+
+        String cod = parts[1];
+        System.out.println("codFinal==" + cod);
+        for (int i = 0; i < vetorCombo.length; i++) {
+            if (cod.equals(vetorCombo[i])) {
+                jComboBoxFuncionario.setSelectedIndex(i);
+            }
+        }
+        //--------------------------------------------------------------------------
 
         dateDe2.setDate((Date) jTable2.getValueAt(linha, 0));
         jTextFieldValorFinaol.setText((String) jTable2.getValueAt(linha, 3).toString());
@@ -625,9 +659,8 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         }
 
         if (pedido != null) {
-            //System.out.println("================" + pedido.size());
+
             for (Pedido p : pedido) {
-                //System.out.println(" ======================= "+p.toString());
 
                 if (p.isPedStatus() == true) {
                     x = "Sim";
@@ -636,7 +669,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
                     x = "Não";
                 }
 
-                modeloTable.addRow(new Object[]{p.getPedData(), p.getPedMesa(), p.getFuncionario().getFunCodigo(), p.getPedValorTotal(), x, p.getPratos().toString(), p.getPedCodigo()});
+                modeloTable.addRow(new Object[]{p.getPedData(), p.getPedMesa(), p.getFuncionario().getFunNome() + "-" + p.getFuncionario().getFunCodigo(), p.getPedValorTotal(), x, p.getPratos().toString(), p.getPedCodigo()});
 
             }
         }
@@ -676,7 +709,7 @@ public class CadastroPedidoGUI extends javax.swing.JFrame {
         String prato = (String) jComboBoxFuncionario.getSelectedItem();
         String[] parts = prato.split("-");
         int cod = Integer.parseInt(parts[0]);
-        //System.out.println(cod);
+
         PratoControle controle = new PratoControle();
         List<Prato> arrC = null;
         arrC = controle.listarPratoControle();

@@ -79,8 +79,7 @@ public class Prato  implements Serializable {
 
 @Override
 public String toString(){
-    String x = "Nome: "+ praNome + " Preço: "+ praPreco;
-    return x ;
+    return praNome; 
 }
 
 
