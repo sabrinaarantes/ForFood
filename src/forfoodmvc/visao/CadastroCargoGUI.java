@@ -79,17 +79,6 @@ public class CadastroCargoGUI extends javax.swing.JFrame {
 
         jLabel4.setText("Salário:");
 
-        jTextFieldSalario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSalarioActionPerformed(evt);
-            }
-        });
-        jTextFieldSalario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldSalarioKeyTyped(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,9 +97,9 @@ public class CadastroCargoGUI extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addGap(24, 24, 24)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldNome)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                     .addComponent(jTextFieldDescricao)
-                    .addComponent(jTextFieldSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                    .addComponent(jTextFieldSalario))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +114,7 @@ public class CadastroCargoGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(148, Short.MAX_VALUE))
@@ -351,17 +340,6 @@ public class CadastroCargoGUI extends javax.swing.JFrame {
         jTextFieldDescricao.setText(jTable1.getValueAt(i, 1).toString());
         jTextFieldSalario.setText(jTable1.getValueAt(i, 2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void jTextFieldSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSalarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSalarioActionPerformed
-
-    private void jTextFieldSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSalarioKeyTyped
-        String caracteres = "0987654321";
-    if (!caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextFieldSalarioKeyTyped
 
     /**
      * @param args the command line arguments

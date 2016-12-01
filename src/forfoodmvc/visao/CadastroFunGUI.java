@@ -59,15 +59,15 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldTelefone = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextFieldCpf = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldEndereco = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jComboBoxCargo = new javax.swing.JComboBox<>();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -95,24 +95,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Telefone:");
 
-        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTelefoneActionPerformed(evt);
-            }
-        });
-        jTextFieldTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldTelefoneKeyTyped(evt);
-            }
-        });
-
         jLabel4.setText("Endereço:");
-
-        jTextFieldCpf.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldCpfKeyTyped(evt);
-            }
-        });
 
         jLabel5.setText("CPF:");
 
@@ -128,6 +111,18 @@ public class CadastroFunGUI extends javax.swing.JFrame {
 
         jComboBoxCargo.setEditable(true);
 
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -135,10 +130,6 @@ public class CadastroFunGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(27, 27, 27)
-                        .addComponent(jTextFieldCpf))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -151,17 +142,19 @@ public class CadastroFunGUI extends javax.swing.JFrame {
                             .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldEndereco)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxCargo, 0, 202, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldNome)
-                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBoxCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jFormattedTextField1)
+                            .addComponent(jFormattedTextField2))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,12 +166,12 @@ public class CadastroFunGUI extends javax.swing.JFrame {
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,7 +229,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu de Opções", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 0, 51))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu de Opções", 2, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 0, 51))); // NOI18N
 
         jButtonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/SalvarIcone.png"))); // NOI18N
         jButtonSave.setText("Cadastrar");
@@ -357,8 +350,8 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         List<Funcionario> arrF = null;
         Funcionario f = new Funcionario();
         f.setFunNome(jTextFieldNome.getText());
-        f.setFunFone(Integer.parseInt(jTextFieldTelefone.getText()));
-        f.setFunCpf(Integer.parseInt(jTextFieldCpf.getText()));
+        f.setFunFone(Integer.parseInt(jFormattedTextField2.getText()));
+        f.setFunCpf(Integer.parseInt(jFormattedTextField1.getText()));
         f.setFunEndereco(jTextFieldEndereco.getText());
         f.setFunSenha(Criptografia.criptografar(jPasswordFieldSenha.getText()));
         f.setCargo(encontraCargo());
@@ -372,7 +365,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, " Cadastro realizado com sucesso! ");
                 AL.add(f);
                 preencherTabela(AL);
-            } else if(arrF.get(i).getFunCpf() == Integer.parseInt(jTextFieldCpf.getText().toString())) {
+            } else if(arrF.get(i).getFunCpf() == Integer.parseInt(jFormattedTextField1.getText().toString())) {
                  JOptionPane.showMessageDialog(null, "Esse CPF já existe");
             }else {
                 funcionarioControl.cadastrarControle(f);
@@ -391,8 +384,8 @@ public class CadastroFunGUI extends javax.swing.JFrame {
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         jTextFieldNome.setText("");
-        jTextFieldTelefone.setText("");
-        jTextFieldCpf.setText("");
+        jFormattedTextField2.setText("");
+        jFormattedTextField1.setText("");
         jTextFieldEndereco.setText("");
         jPasswordFieldSenha.setText("");
         jComboBoxCargo.setSelectedIndex(0);
@@ -413,16 +406,16 @@ public class CadastroFunGUI extends javax.swing.JFrame {
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         int index = jTable1.getSelectedRow();
         jTable1.setValueAt(jTextFieldNome.getText(), index, 0);
-        jTable1.setValueAt(jTextFieldTelefone.getText(), index, 1);
-        jTable1.setValueAt(jTextFieldCpf.getText(), index, 2);
+        jTable1.setValueAt(jFormattedTextField2.getText(), index, 1);
+        jTable1.setValueAt(jFormattedTextField1.getText(), index, 2);
         jTable1.setValueAt(jTextFieldEndereco.getText(), index, 3);
         jTable1.setValueAt(encontraCargo(), index, 4);
 
         Funcionario f = new Funcionario();
 
         f.setFunNome(jTextFieldNome.getText());
-        f.setFunFone(Integer.parseInt(jTextFieldTelefone.getText()));
-        f.setFunCpf(Integer.parseInt(jTextFieldCpf.getText()));
+        f.setFunFone(Integer.parseInt(jFormattedTextField2.getText()));
+        f.setFunCpf(Integer.parseInt(jFormattedTextField1.getText()));
         f.setFunEndereco(jTextFieldEndereco.getText());
         f.setCargo(encontraCargo());
         f.setFunSenha(Criptografia.criptografar(jPasswordFieldSenha.getText()));
@@ -438,16 +431,16 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         List<Funcionario> arrF = null;
         int index = jTable1.getSelectedRow();
         jTable1.setValueAt(jTextFieldNome.getText(), index, 0);
-        jTable1.setValueAt(jTextFieldTelefone.getText(), index, 1);
-        jTable1.setValueAt(jTextFieldCpf.getText(), index, 2);
+        jTable1.setValueAt(jFormattedTextField2.getText(), index, 1);
+        jTable1.setValueAt(jFormattedTextField1.getText(), index, 2);
         jTable1.setValueAt(jTextFieldEndereco.getText(), index, 3);
         jTable1.setValueAt(encontraCargo(), index, 4);
 
         Funcionario f = new Funcionario();
 
         f.setFunNome(jTextFieldNome.getText());
-        f.setFunFone(Integer.parseInt(jTextFieldTelefone.getText()));
-        f.setFunCpf(Integer.parseInt(jTextFieldCpf.getText()));
+        f.setFunFone(Integer.parseInt(jFormattedTextField2.getText()));
+        f.setFunCpf(Integer.parseInt(jFormattedTextField1.getText()));
         f.setFunEndereco(jTextFieldEndereco.getText());
         f.setCargo(encontraCargo());
         f.setFunSenha(Criptografia.criptografar(jPasswordFieldSenha.getText()));
@@ -457,7 +450,7 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         FuncionarioControle funcionarioControl = new FuncionarioControle();
         arrF = funcionarioControl.listarControle();
         for (Funcionario arrF1 : arrF) {
-            if (arrF1.getFunCpf() == Integer.parseInt(jTextFieldCpf.getText().toString())) {
+            if (arrF1.getFunCpf() == Integer.parseInt(jFormattedTextField1.getText().toString())) {
                 JOptionPane.showMessageDialog(null, "Esse CPF já existe");
                 break;
 
@@ -478,9 +471,9 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         int g = 0;
 
         jTextFieldNome.setText(jTable1.getValueAt(i, 0).toString());
-        jTextFieldTelefone.setText(jTable1.getValueAt(i, 1).toString());
+        jFormattedTextField2.setText(jTable1.getValueAt(i, 1).toString());
         jTextFieldEndereco.setText(jTable1.getValueAt(i, 2).toString());
-        jTextFieldCpf.setText(jTable1.getValueAt(i, 3).toString());
+        jFormattedTextField1.setText(jTable1.getValueAt(i, 3).toString());
         for (int x = 0; x < cargoControl.listarControle().size(); x++) {
             if (cargoControl.listarControle().get(x).getCarNome().equals(jTable1.getValueAt(i, 4).toString())) {
                 g = x;
@@ -489,24 +482,6 @@ public class CadastroFunGUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
-
-    private void jTextFieldTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneKeyTyped
-        String caracteres = "0987654321";
-    if (!caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextFieldTelefoneKeyTyped
-
-    private void jTextFieldCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCpfKeyTyped
-        String caracteres = "0987654321";
-    if (!caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextFieldCpfKeyTyped
 
     /**
      * @param args the command line arguments
@@ -551,6 +526,8 @@ public class CadastroFunGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReturn;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JComboBox<String> jComboBoxCargo;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -564,10 +541,8 @@ public class CadastroFunGUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 
     private void listar() {

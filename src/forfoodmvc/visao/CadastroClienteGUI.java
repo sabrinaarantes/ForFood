@@ -42,9 +42,9 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldCpf = new javax.swing.JTextField();
-        jTextFieldTelefone = new javax.swing.JTextField();
         jTextFieldEndereco = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -70,27 +70,17 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
 
         jLabel5.setText("Endereço:");
 
-        jTextFieldCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCpfActionPerformed(evt);
-            }
-        });
-        jTextFieldCpf.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldCpfKeyTyped(evt);
-            }
-        });
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
-        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTelefoneActionPerformed(evt);
-            }
-        });
-        jTextFieldTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldTelefoneKeyTyped(evt);
-            }
-        });
+        try {
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,10 +95,10 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                     .addComponent(jTextFieldNome)
-                    .addComponent(jTextFieldCpf)
-                    .addComponent(jTextFieldTelefone))
+                    .addComponent(jFormattedTextField1)
+                    .addComponent(jFormattedTextField2))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,16 +111,16 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -175,7 +165,7 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Menu de Opções", 2, 0, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(204, 0, 51))); // NOI18N
@@ -296,14 +286,14 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
         Cliente c = new Cliente();
         List<Cliente> arrC = null;
         c.setCliNome(jTextFieldNome.getText());
-        c.setCliCpf(Integer.parseInt(jTextFieldCpf.getText()));
-        c.setCliTelefone(Integer.parseInt(jTextFieldTelefone.getText()));
+        c.setCliCpf(Integer.parseInt(jFormattedTextField1.getText()));
+        c.setCliTelefone(Integer.parseInt(jFormattedTextField2.getText()));
         c.setCliEndereco(jTextFieldEndereco.getText());
 
         ClienteControle clienteControl = new ClienteControle();
         arrC = clienteControl.listarControle();
         for (Cliente arrC1 : arrC) {
-            if (arrC1.getCliCpf() == Integer.parseInt(jTextFieldCpf.getText().toString())) {
+            if (arrC1.getCliCpf() == Integer.parseInt(jFormattedTextField1.getText().toString())) {
                 JOptionPane.showMessageDialog(null, "Esse CPF já existe");
                 break;
 
@@ -321,8 +311,8 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         jTextFieldNome.setText("");
-        jTextFieldCpf.setText("");
-        jTextFieldTelefone.setText("");
+        jFormattedTextField1.setText("");
+        jFormattedTextField1.setText("");
         jTextFieldEndereco.setText("");
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
@@ -336,14 +326,14 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
         Cliente c = new Cliente();
 
         jTable1.setValueAt(jTextFieldNome.getText().toString(), linha, 0);
-        jTable1.setValueAt(jTextFieldCpf.getText().toString(), linha, 1);
-        jTable1.setValueAt(Float.parseFloat(jTextFieldTelefone.getText()), linha, 2);
+        jTable1.setValueAt(jFormattedTextField1.getText().toString(), linha, 1);
+        jTable1.setValueAt(Float.parseFloat(jFormattedTextField1.getText()), linha, 2);
         jTable1.setValueAt(jTextFieldEndereco.getText().toString(), linha, 3);
 
         c.setCliNome(jTextFieldNome.getText());
-        c.setCliTelefone(Integer.parseInt(jTextFieldTelefone.getText()));
+        c.setCliTelefone(Integer.parseInt(jFormattedTextField1.getText()));
         c.setCliEndereco(jTextFieldEndereco.getText());
-        c.setCliCpf(Integer.parseInt(jTextFieldCpf.getText()));
+        c.setCliCpf(Integer.parseInt(jFormattedTextField1.getText()));
         ClienteControle clienteControl = new ClienteControle();
         clienteControl.atualizarControle(c);
     }//GEN-LAST:event_jButtonAlterarActionPerformed
@@ -351,8 +341,8 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int linha = jTable1.getSelectedRow(); //retorna um inteiro
         jTextFieldNome.setText((String) jTable1.getValueAt(linha, 0));
-        jTextFieldCpf.setText((String) jTable1.getValueAt(linha, 1).toString());
-        jTextFieldTelefone.setText((String) jTable1.getValueAt(linha, 2).toString());
+        jFormattedTextField1.setText((String) jTable1.getValueAt(linha, 1).toString());
+        jFormattedTextField1.setText((String) jTable1.getValueAt(linha, 2).toString());
         jTextFieldEndereco.setText((String) jTable1.getValueAt(linha, 3));
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -362,8 +352,8 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
         int index = jTable1.getSelectedRow();
 
         c.setCliNome(jTextFieldNome.getText());
-        c.setCliCpf(Integer.parseInt(jTextFieldCpf.getText()));
-        c.setCliTelefone(Integer.parseInt(jTextFieldTelefone.getText().toString()));
+        c.setCliCpf(Integer.parseInt(jFormattedTextField1.getText()));
+        c.setCliTelefone(Integer.parseInt(jFormattedTextField1.getText().toString()));
         c.setCliEndereco(jTextFieldEndereco.getText());
 
         ClienteControle clienteControl = new ClienteControle();
@@ -372,32 +362,10 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
         model.removeRow(index);
 
         jTextFieldNome.setText("");
-        jTextFieldCpf.setText("");
-        jTextFieldTelefone.setText("");
+        jFormattedTextField1.setText("");
+        jFormattedTextField1.setText("");
         jTextFieldEndereco.setText("");
     }//GEN-LAST:event_jButtonDeletarActionPerformed
-
-    private void jTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfActionPerformed
-     
-    }//GEN-LAST:event_jTextFieldCpfActionPerformed
-
-    private void jTextFieldCpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCpfKeyTyped
-       String caracteres = "0987654321";
-    if (!caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextFieldCpfKeyTyped
-
-    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
-
-    private void jTextFieldTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneKeyTyped
-        String caracteres = "0987654321";
-    if (!caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextFieldTelefoneKeyTyped
 
     /**
      * @param args the command line arguments
@@ -463,6 +431,8 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonDeletar;
     private javax.swing.JButton jButtonVoltar;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -473,9 +443,7 @@ public class CadastroClienteGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 }

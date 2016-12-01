@@ -325,10 +325,6 @@ public class CadastrarPratoGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPrecoActionPerformed
 
-    private void jTextFieldTempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTempoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTempoActionPerformed
-
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         Prato p = new Prato();
         p.setPraNome(jTextFieldNome.getText());
@@ -418,11 +414,15 @@ public class CadastrarPratoGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPrecoKeyTyped
 
     private void jTextFieldTempoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTempoKeyTyped
-       String caracteres = "0987654321";
-    if (!caracteres.contains(evt.getKeyChar() + "")) {
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldTempoKeyTyped
+
+    private void jTextFieldTempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTempoActionPerformed
 
     
     public static void main(String args[]) {
