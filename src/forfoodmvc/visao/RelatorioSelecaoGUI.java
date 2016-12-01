@@ -5,8 +5,6 @@ package forfoodmvc.visao;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 /**
  *
  * @author Alunos
@@ -40,6 +38,7 @@ public class RelatorioSelecaoGUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ForFood - Seleção de relatórios");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 51));
@@ -47,7 +46,7 @@ public class RelatorioSelecaoGUI extends javax.swing.JFrame {
         jLabel1.setText("Seleção de relatórios: ");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/RelatorioIcone.png"))); // NOI18N
-        jButton1.setText("Relatório de Pratos por dia");
+        jButton1.setText("Relatório de pedidos por dia");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -63,10 +62,15 @@ public class RelatorioSelecaoGUI extends javax.swing.JFrame {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/RelatorioIcone.png"))); // NOI18N
-        jButton3.setText("jButton3");
+        jButton3.setText("Relatório de clientes");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/RelatorioIcone.png"))); // NOI18N
-        jButton4.setText("jButton4");
+        jButton4.setText("Fluxo do caixa");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -82,7 +86,12 @@ public class RelatorioSelecaoGUI extends javax.swing.JFrame {
         });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/RelatorioIcone.png"))); // NOI18N
-        jButton6.setText("jButton6");
+        jButton6.setText("Relatório de pratos (cardápio)");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/VoltarIcone.png"))); // NOI18N
         jButton7.setText("Voltar");
@@ -160,23 +169,34 @@ public class RelatorioSelecaoGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new RelatorioPedidoDiaGUI().setVisible(true);
-        this.dispose(); 
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new RelatorioFuncionariodomesGUI().setVisible(true);
-        this.dispose();        
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-            new PrincipalGUI().setVisible(true);
-            this.dispose();        // TODO add your handling code here:
+        new PrincipalGUI().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new RelatorioPratoVendido().setVisible(true);
-        this.dispose();  
+        new RelatorioPratoVendidoGUI().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new RelatorioPratosGUI().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new RelatorioClienteGUI().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -40,6 +40,7 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ForFood - Fluxo do caixa");
 
         panelDados2.setBorder(javax.swing.BorderFactory.createTitledBorder("De"));
         panelDados2.setLayout(null);
@@ -52,6 +53,7 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
         panelDados2.add(dateDe2);
         dateDe2.setBounds(60, 40, 108, 22);
 
+        jButtonGerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ConfirmIcon.png"))); // NOI18N
         jButtonGerar.setText("Gerar");
         jButtonGerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +61,7 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
             }
         });
 
+        jButtonVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/VoltarIcone.png"))); // NOI18N
         jButtonVoltar.setText("Voltar");
         jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +71,7 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 0, 51));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/RelatorioIcone.png"))); // NOI18N
         jLabel2.setText("Fluxo de Caixa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,9 +89,9 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
                         .addGap(100, 100, 100)
                         .addComponent(jButtonVoltar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
+                        .addGap(111, 111, 111)
                         .addComponent(jLabel2)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +104,7 @@ public class RelatorioFluxoGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGerar)
                     .addComponent(jButtonVoltar))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();

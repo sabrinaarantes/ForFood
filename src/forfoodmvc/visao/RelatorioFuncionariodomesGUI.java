@@ -57,7 +57,7 @@ public class RelatorioFuncionariodomesGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ForFood - Relatório de pedidos por dia");
+        setTitle("ForFood - Relatório de funcionário do mês");
         setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
